@@ -6,7 +6,7 @@ from app import models
 from app.database import get_db
 from app.oauth2 import create_access_token
 from app.password import verify_password
-from app.schemas import Token, UserLogin
+from app.schemas import Token
 
 
 router = APIRouter(tags=["Authentication"])
