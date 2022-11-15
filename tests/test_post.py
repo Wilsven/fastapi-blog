@@ -1,4 +1,5 @@
 import pytest
+
 from app import models
 from app.schemas import PostResponse, PostVote
 

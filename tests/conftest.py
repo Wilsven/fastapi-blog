@@ -3,10 +3,11 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from app import models
 from app.config import settings
 from app.database import get_db
 from app.main import app
-from app.models import Base, Post
+from app.models import Base
 from app.oauth2 import create_access_token
 
 
@@ -115,7 +116,7 @@ def test_posts(test_user, test_user_for_delete_test, session):
     ]
 
     def create_post_model(post: dict):
-        return Post(**post)
+        return models.Post(**post)
 
     posts_map = map(create_post_model, posts_data)
     posts = list(posts_map)
@@ -123,6 +124,6 @@ def test_posts(test_user, test_user_for_delete_test, session):
     session.add_all(posts)
     session.commit()
 
-    queried_posts = session.query(Post).all()
+    queried_posts = session.query(models.Post).all()
 
     return queried_posts
