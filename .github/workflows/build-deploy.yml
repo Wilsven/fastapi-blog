@@ -49,4 +49,4 @@ jobs:
       - name: Test with Pytest
         run: |
           pip install pytest
-          pytest -v -s
+          python -m pytest -v -s
