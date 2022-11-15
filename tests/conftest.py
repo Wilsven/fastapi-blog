@@ -2,7 +2,7 @@ from fastapi.testclient import TestClient
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from app import models
+from app.models import Post
 
 from app.config import settings
 from app.database import get_db
@@ -116,7 +116,7 @@ def test_posts(test_user, test_user_for_delete_test, session):
     ]
 
     def create_post_model(post: dict):
-        return models.Post(**post)
+        return Post(**post)
 
     posts_map = map(create_post_model, posts_data)
     posts = list(posts_map)
@@ -124,6 +124,6 @@ def test_posts(test_user, test_user_for_delete_test, session):
     session.add_all(posts)
     session.commit()
 
-    queried_posts = session.query(models.Post).all()
+    queried_posts = session.query(Post).all()
 
     return queried_posts
