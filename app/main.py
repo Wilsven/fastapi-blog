@@ -27,4 +27,4 @@ app.include_router(authentication.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hello World"}
+    return {"message": "Successfully deployed CI/CD pipeline"}
